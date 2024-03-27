@@ -11,6 +11,9 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 import dj_database_url
 from decouple import config
+# import cloudinary
+# import cloudinary.uploader
+# import cloudinary.api
 from pathlib import Path
 import os
 
@@ -28,6 +31,11 @@ DEBUG = config("DEBUG", cast = bool)
 
 ALLOWED_HOSTS = ["*"]
 
+CLOUDINARY_STORAGE = {
+    "CLOUD_NAME":config("CLOUD_NAME"),
+    "API_KEY": config("API_KEY"),
+    "API_SECRET": config("API_SECRET"),
+}
 
 # Application definition
 
@@ -38,10 +46,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'cloudinary_storage',
     'app',
     'account',
     'product',
     'staff',
+    'cloudinary',
 ]
 
 MIDDLEWARE = [
@@ -128,6 +138,7 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = ( os.path.join(BASE_DIR, 'static'),)
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 MEDIA_URL = '/media/'
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 LOGIN_URL = "account:login"
 
 # Default primary key field type

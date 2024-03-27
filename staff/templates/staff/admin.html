@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load static %}
+{%block title %} Home {% endblock %}
+
+{% block main %}
+<h1>ADMIN PANEL</h1>
+<p>welcome {{ user.username}}</p>
+<a href="{% url 'staff:create' %}"><button id="bt">Add Product</button></a>
+
+{% for product in products %}
+<p><a href="{% url 'staff:edit' product.id %}">{{product.name}}</a></p>
+{% endfor %}
+{% endblock %}

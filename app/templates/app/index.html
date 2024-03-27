@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{%block title %} Home {% endblock %}
+
+{% block main %}
+{% if user.is_authenticated%}
+    <h1>WELCOME back {{user.username}}</h1><br><br>
+    <h2>You have beeen hacked</h2>
+{% else%}
+    <h1>WELCOME TO OUR SITE</h1><br><br>
+    <p>Your success journey beggings by signing up and creating an account.</p><br>
+    <p>Do wellgo through our terms and condition before you proceed</p>
+{% endif %}
+{% endblock %}

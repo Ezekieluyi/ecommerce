@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+{%block title %}  {{item.name}} {% endblock %}
+
+{% block main %}
+<div class="img-wrapper">
+    <img src="{{product.image.url}}" alt="">
+</div>
+<h3>name: {{product.name}}</h3>
+<p>description: {{ product.description}}</p>
+<p>quantity: {{ product.quantity}}</p>
+<p>price: {{ product.price }}</p><br><br>
+<br>
+<a href="{% url 'product:buy' product.id %}"><button>Buy</button></a>
+
+
+{% endblock %}

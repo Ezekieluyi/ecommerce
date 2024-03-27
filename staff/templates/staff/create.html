@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+{%block title %} Home {% endblock %}
+
+{% block main %}
+
+<form action="" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <label for="name">Name</label><br>
+    <input type="text" id="name" name="name"><br><br>
+    <label for="des">Description</label><br>
+    <textarea name="description" id="des" cols="30" rows="10"></textarea><br><br>
+    <label for="img">Image</label><br>
+    <input type="file" id="img" name="image"><br><br>
+    <label for="qu">Quantity</label><br>
+    <input type="number" id="qu" name="quantity"><br><br>
+    <label for="price">price</label><br>
+    <input type="number" id="price" name="price"><br><br>
+<button>Submit</button>
+
+</form>
+{% endblock %}

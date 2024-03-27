@@ -1,0 +1,17 @@
+{% load static %}
+<nav>
+    <ul>
+        <li><a href="{% url 'app:home'%}">Home</a></li>
+        {% if user.is_authenticated%}
+            <li><a href="{% url 'account:logout'%}">logout</a></li>
+            <li><a href="{% url 'app:profile'%}">Profile</a></li>
+            <li><a href="{% url 'product:product'%}">product</a></li>
+            {% if user.is_staff %}
+            <li><a href="{% url 'staff:home'%}">Admin Panel</a></li>
+            {% endif %}
+        {% else%}
+            <li><a href="{% url 'account:signup'%}">signup</a></li>
+            <li><a href="{% url 'account:login'%}">login</a></li>
+        {% endif %}
+    </ul>
+</nav>

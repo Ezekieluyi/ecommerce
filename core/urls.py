@@ -26,7 +26,9 @@ urlpatterns = [
     path("product/", include("product.urls")),
     path("staff/", include("staff.urls" )),
    
-] +  static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
+]
+if settings.DEBUG:
+    urlpatterns +=  static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
 
 handler404 = "app.views.error404"
 handler500 = "app.views.error500"
